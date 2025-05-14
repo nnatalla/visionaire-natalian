@@ -11,12 +11,11 @@ const HeroSection = () => {
               Natalia Nitychoruk
             </h1>
             <h2 className="text-2xl md:text-3xl font-medium text-blue-600 mt-2">
-              Technical Recruiter
+              IT Recruiter | Executive Search
             </h2>
             <p className="text-lg text-gray-600 mt-6 max-w-lg">
-              Rekruter IT z doświadczeniem w pozyskiwaniu talentów technicznych.
-              Specjalizuję się w budowaniu skutecznych strategii rekrutacyjnych
-              i znajdowaniu najlepszych specjalistów dla firm IT.
+              Doświadczony rekruter IT specjalizujący się w pozyskiwaniu talentów technicznych i executive search.
+              Pasjonatka nowych technologii z zacięciem analitycznym i umiejętnością budowania relacji.
             </p>
             <div className="mt-8 flex space-x-4">
               <Button asChild className="bg-blue-600 hover:bg-blue-700">

@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
             <h3 className="text-2xl font-bold text-blue-400">Natalia Nitychoruk</h3>
-            <p className="text-gray-400 mt-2">Technical Recruiter</p>
+            <p className="text-gray-400 mt-2">IT Recruiter | Executive Search</p>
           </div>
           
           <div className="flex space-x-6">
@@ -32,7 +32,7 @@ const Footer = () => {
             </a>
             
             <a
-              href="mailto:natalia.nitychoruk@example.com"
+              href="mailto:n.nitychoruk@gmail.com"
               className="hover:text-blue-400 transition-colors"
               aria-label="Email"
             >

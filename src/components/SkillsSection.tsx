@@ -3,30 +3,32 @@ import { Progress } from "@/components/ui/progress";
 
 const SkillsSection = () => {
   const technicalSkills = [
-    { name: "LinkedIn Recruiter", level: 95 },
-    { name: "Boolean Search", level: 90 },
-    { name: "Applicant Tracking Systems", level: 85 },
-    { name: "Technical Screening", level: 80 },
-    { name: "Recruitment Marketing", level: 75 },
+    { name: "LinkedIn Recruiter & Boolean Search", level: 95 },
+    { name: "Screening i ocena umiejętności technicznych", level: 90 },
+    { name: "Executive Search", level: 85 },
+    { name: "Prowadzenie negocjacji", level: 85 },
+    { name: "Systemy ATS i CRM", level: 80 },
   ];
 
   const itKnowledge = [
-    { name: "Java Ecosystem", level: 70 },
-    { name: "JavaScript Frameworks", level: 65 },
-    { name: ".NET Technologies", level: 60 },
-    { name: "DevOps Practices", level: 55 },
-    { name: "Cloud Computing", level: 50 },
+    { name: "Technologie Java", level: 75 },
+    { name: "Ekosystem .NET", level: 70 },
+    { name: "JavaScript i framework'i", level: 65 },
+    { name: "DevOps i Cloud", level: 60 },
+    { name: "Zarządzanie projektami (Agile, Scrum)", level: 80 },
   ];
 
   const softSkills = [
     "Komunikacja",
-    "Negocjacje",
-    "Zarządzanie procesami",
-    "Analiza CV",
-    "Employer branding",
     "Budowanie relacji",
-    "Praca zespołowa",
-    "Organizacja czasu",
+    "Negocjacje",
+    "Analiza potrzeb",
+    "Doradztwo biznesowe",
+    "Zarządzanie projektem",
+    "Employer branding",
+    "Networking",
+    "Empatia",
+    "Praca pod presją czasu"
   ];
 
   return (

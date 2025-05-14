@@ -4,39 +4,63 @@ import { Card, CardContent } from "@/components/ui/card";
 const ExperienceSection = () => {
   const experiences = [
     {
-      title: "Technical Recruiter",
-      company: "PeopleBox",
-      period: "2022 - obecnie",
+      title: "Właściciel / IT Recruiter & Executive Search",
+      company: "Natalia Nitychoruk",
+      period: "maj 2023 - obecnie",
       description: [
-        "Rekrutacja specjalistów IT (Java, .NET, Python, DevOps, itp.) na różne poziomy zaawansowania",
-        "Budowanie strategii sourcingowych i prowadzenie kampanii rekrutacyjnych",
-        "Ocena umiejętności technicznych kandydatów we współpracy z zespołami IT",
-        "Współpraca z klientami w celu zrozumienia ich potrzeb rekrutacyjnych",
-        "Budowanie i utrzymywanie bazy talentów IT"
+        "Prowadzenie własnej działalności w zakresie rekrutacji IT i executive search",
+        "Współpraca z firmami produktowymi oraz agencjami IT",
+        "Rekrutacja programistów, DevOps, PM/PO oraz kadry zarządzającej (m.in. CTO)",
+        "Budowanie strategii sourcingowych dopasowanych do potrzeb klientów",
+        "Kompleksowa obsługa procesów rekrutacyjnych"
+      ],
+    },
+    {
+      title: "IT Talent Acquisition Specialist",
+      company: "Talent Place Sp. z o.o.",
+      period: "lip 2022 - maj 2023",
+      description: [
+        "Prowadzenie rekrutacji technicznych na stanowiska seniorskie w projektach międzynarodowych",
+        "Współpraca z klientami amerykańskimi i zachodnioeuropejskimi",
+        "Onboarding nowych rekruterów w społeczności Talent Place",
+        "Sourcing na platformach takich jak LinkedIn, GitHub i Stack Overflow",
+        "Prowadzenie projektów w modelu RPO i rekrutacji stałych"
+      ],
+    },
+    {
+      title: "IT Recruitment Specialist",
+      company: "Awareson People Sp. z o.o.",
+      period: "sty 2022 - lip 2022",
+      description: [
+        "Prowadzenie kompleksowych rekrutacji na role Devops Engineer, Backend Developer, PHP Developer",
+        "Tworzenie strategii pozyskiwania kandydatów",
+        "Przeprowadzanie wywiadów rekrutacyjnych w języku polskim i angielskim",
+        "Budowanie długofalowych relacji z kandydatami i klientami",
+        "Doradztwo dla klientów w zakresie kształtowania oferty dopasowanej do realiów rynku"
       ],
     },
     {
       title: "IT Recruiter",
-      company: "Adecco Poland",
-      period: "2021 - 2022",
+      company: "Emploway / Humano",
+      period: "sie 2021 - gru 2021",
       description: [
-        "Rekrutacja specjalistów na stanowiska techniczne",
-        "Przeprowadzanie screeningów telefonicznych i rozmów kwalifikacyjnych",
-        "Współpraca z menedżerami działów IT przy selekcji kandydatów",
-        "Aktywne poszukiwanie kandydatów poprzez różne kanały sourcingowe",
-        "Koordynowanie procesów rekrutacyjnych i komunikacja z kandydatami"
+        "Rekrutacja specjalistów IT na różne poziomy zaawansowania do projektów międzynarodowych",
+        "Budowanie baz kandydatów wykorzystując metody sourcingowe",
+        "Współpraca z działami HR po stronie klienta",
+        "Przeprowadzanie screeningów technicznych",
+        "Raportowanie procesów rekrutacyjnych"
       ],
     },
     {
-      title: "Junior Recruiter",
-      company: "InSol IT",
-      period: "2020 - 2021",
+      title: "Consultant",
+      company: "HAYS Poland",
+      period: "lip 2020 - sie 2021",
       description: [
-        "Rekrutacja na stanowiska juniorskie w obszarze IT",
-        "Wsparcie w organizacji i przeprowadzeniu procesów rekrutacyjnych",
-        "Budowanie marki pracodawcy w mediach społecznościowych",
-        "Screening CV i prowadzenie wstępnych rozmów z kandydatami",
-        "Przygotowywanie raportów rekrutacyjnych"
+        "Samodzielne prowadzenie projektów rekrutacyjnych dla wiodących firm z branży tech",
+        "Budowanie strategii pozyskiwania talentów w obszarach IT i digital marketing",
+        "Doradztwo dla klientów w zakresie trendów rynkowych i kształtowania oferty",
+        "Zarządzanie bazą kandydatów w systemie CRM",
+        "Aktywny networking i budowanie długotrwałych relacji w środowisku IT"
       ],
     }
   ];

@@ -11,12 +11,12 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   useEffect(() => {
-    document.title = "Natalia Nitychoruk - Technical Recruiter";
+    document.title = "Natalia Nitychoruk - IT Recruiter | Executive Search";
 
     // Update metadata
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute("content", "Natalia Nitychoruk - Technical Recruiter specjalizujący się w rekrutacji specjalistów IT");
+      metaDescription.setAttribute("content", "Natalia Nitychoruk - IT Recruiter specjalizujący się w rekrutacji specjalistów IT i executive search. Ponad 6 lat doświadczenia w branży IT.");
     }
     
     // Animation observer for scroll animations

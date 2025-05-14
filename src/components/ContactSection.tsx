@@ -49,8 +49,8 @@ const ContactSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Kontakt</h2>
           <div className="mt-2 h-1 w-20 bg-blue-500 mx-auto"></div>
           <p className="mt-4 text-gray-600 max-w-lg mx-auto">
-            Jesteś zainteresowany współpracą lub masz pytania? Skontaktuj się ze
-            mną poprzez poniższy formularz lub bezpośrednio przez LinkedIn.
+            Jesteś zainteresowany współpracą rekrutacyjną lub szukasz nowych możliwości zawodowych?
+            Skontaktuj się ze mną bezpośrednio przez formularz lub LinkedIn.
           </p>
         </div>
 
@@ -79,10 +79,10 @@ const ContactSection = () => {
                 <div>
                   <h4 className="font-bold text-gray-700">Email</h4>
                   <a
-                    href="mailto:natalia.nitychoruk@example.com"
+                    href="mailto:n.nitychoruk@gmail.com"
                     className="text-blue-600 hover:underline"
                   >
-                    natalia.nitychoruk@example.com
+                    n.nitychoruk@gmail.com
                   </a>
                 </div>
               </div>

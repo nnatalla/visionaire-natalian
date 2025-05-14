@@ -4,37 +4,37 @@ import { Card, CardContent } from "@/components/ui/card";
 const EducationSection = () => {
   const education = [
     {
-      degree: "Wyższa Szkoła Bankowa",
-      field: "Zarządzanie Zasobami Ludzkimi",
-      period: "2016 - 2020",
-      description: "Specjalizacja w rekrutacji i selekcji pracowników, zarządzaniu talentami oraz strategii HR.",
+      degree: "Psychologia, Magister",
+      field: "SWPS Uniwersytet Humanistycznospołeczny w Warszawie",
+      period: "2016 - 2021",
+      description: "Specjalizacja w psychologii biznesu i organizacji, ze szczególnym uwzględnieniem procesów rekrutacyjnych i zarządzania zasobami ludzkimi.",
     },
     {
-      degree: "Certyfikacja HRCI",
-      field: "Professional in Human Resources",
-      period: "2021",
-      description: "Certyfikacja potwierdzająca kompetencje w obszarze zarządzania zasobami ludzkimi i rekrutacji specjalistów.",
+      degree: "College of Higher Secondary Education",
+      field: "Oxford, United Kingdom",
+      period: "2015",
+      description: "Kształcenie językowe na poziomie zaawansowanym, rozwijanie umiejętności komunikacyjnych w kontekście biznesowym.",
     }
   ];
   
   const courses = [
     {
-      name: "IT Recruitment Masterclass",
-      provider: "Devskiller Academy",
-      year: "2022",
-      description: "Zaawansowane techniki rekrutacji specjalistów IT, ocena kompetencji technicznych i prowadzenie rozmów kwalifikacyjnych."
+      name: "Rekrutacja w IT od zera",
+      provider: "Future Collars",
+      year: "2021",
+      description: "Kompleksowy kurs rekrutacji technicznej, obejmujący podstawy programowania, zrozumienie technologii i metodyki weryfikacji kompetencji kandydatów IT."
     },
     {
-      name: "Technical Recruitment Fundamentals",
-      provider: "LinkedIn Learning",
-      year: "2021",
-      description: "Podstawy rekrutacji technicznej, zrozumienie stanowisk IT i kluczowych kompetencji technicznych."
+      name: "Sourcing Ninja Masterclass",
+      provider: "Kiwi Jobs",
+      year: "2023",
+      description: "Zaawansowane techniki sourcingowe, Boolean search i efektywne metody dotarcia do kandydatów pasywnych w branży IT."
     },
     {
-      name: "Advanced Sourcing Techniques",
-      provider: "Sourcecon",
+      name: "Executive Recruitment Best Practices",
+      provider: "HAYS Academy",
       year: "2021",
-      description: "Zaawansowane metody wyszukiwania kandydatów w obszarze IT, techniki Boolean search i budowanie bazy talentów."
+      description: "Specjalistyczne szkolenie z zakresu rekrutacji na stanowiska kierownicze i zarządcze, prowadzenie procesów executive search."
     }
   ];
 
