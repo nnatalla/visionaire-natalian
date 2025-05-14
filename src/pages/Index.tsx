@@ -25,7 +25,9 @@ const Index = () => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add("animate-fade-in");
-            entry.target.style.opacity = "1";
+            if (entry.target instanceof HTMLElement) {
+              entry.target.style.opacity = "1";
+            }
           }
         });
       },
