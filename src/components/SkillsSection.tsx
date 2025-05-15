@@ -1,84 +1,82 @@
 
-import { Progress } from "@/components/ui/progress";
+import React from 'react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const SkillsSection = () => {
-  const technicalSkills = [
-    { name: "LinkedIn Recruiter & Boolean Search", level: 95 },
-    { name: "Screening i ocena umiejętności technicznych", level: 90 },
-    { name: "Executive Search", level: 85 },
-    { name: "Prowadzenie negocjacji", level: 85 },
-    { name: "Systemy ATS i CRM", level: 80 },
-  ];
+  const isMobile = useIsMobile();
 
-  const itKnowledge = [
-    { name: "Technologie Java", level: 75 },
-    { name: "Ekosystem .NET", level: 70 },
-    { name: "JavaScript i framework'i", level: 65 },
-    { name: "DevOps i Cloud", level: 60 },
-    { name: "Zarządzanie projektami (Agile, Scrum)", level: 80 },
+  const technicalSkills = [
+    "Automatyzacja procesów biznesowych",
+    "Analiza danych (Python, R, SQL)",
+    "Machine Learning",
+    "Deep Learning (NLP, Computer Vision)",
+    "Cloud AI (Google Cloud, Azure)",
+    "Data Visualization",
+    "Integracja API",
+    "CI/CD Pipelines",
+    "Workflow Automation",
+    "ETL Processes"
   ];
 
   const softSkills = [
     "Komunikacja",
     "Budowanie relacji",
-    "Negocjacje",
-    "Analiza potrzeb",
-    "Doradztwo biznesowe",
-    "Zarządzanie projektem",
-    "Employer branding",
+    "Critical thinking",
+    "Analiza potrzeb biznesowych",
+    "Doradztwo strategiczne",
+    "Zarządzanie projektami AI",
+    "Prezentacje techniczne",
     "Networking",
-    "Empatia",
-    "Praca pod presją czasu"
+    "Myślenie kreatywne",
+    "Praca w dynamicznym środowisku"
   ];
 
   return (
-    <section id="skills" className="section-padding bg-gray-50">
-      <div className="section-container">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Umiejętności</h2>
-          <div className="mt-2 h-1 w-20 bg-blue-500 mx-auto"></div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          <div className="animate-slide-up opacity-0" style={{ animationDelay: "0.3s" }}>
-            <h3 className="text-2xl font-bold text-gray-800 mb-6">Umiejętności rekrutacyjne</h3>
-            
-            {technicalSkills.map((skill, index) => (
-              <div key={index} className="mb-6">
-                <div className="flex justify-between mb-2">
-                  <span className="text-gray-700 font-medium">{skill.name}</span>
-                  <span className="text-blue-600">{skill.level}%</span>
-                </div>
-                <Progress value={skill.level} className="h-2" />
-              </div>
-            ))}
-          </div>
-
-          <div className="animate-slide-up opacity-0" style={{ animationDelay: "0.5s" }}>
-            <h3 className="text-2xl font-bold text-gray-800 mb-6">Wiedza z obszaru IT</h3>
-            
-            {itKnowledge.map((skill, index) => (
-              <div key={index} className="mb-6">
-                <div className="flex justify-between mb-2">
-                  <span className="text-gray-700 font-medium">{skill.name}</span>
-                  <span className="text-blue-600">{skill.level}%</span>
-                </div>
-                <Progress value={skill.level} className="h-2" />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="mt-16 animate-slide-up opacity-0" style={{ animationDelay: "0.7s" }}>
-          <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">Umiejętności miękkie</h3>
+    <section id="umiejetnosci" className="container py-10 px-6 md:px-10 min-h-screen flex flex-col justify-center">
+      <h2 className="text-3xl md:text-4xl font-bold mb-8 text-blue-400 pt-20 -mt-20">
+        Umiejętności
+      </h2>
+      
+      <div className={`${isMobile ? 'space-y-12' : 'grid grid-cols-2 gap-10'}`}>
+        <div className="backdrop-blur-md bg-white/5 p-8 rounded-2xl border border-blue-500/20 shadow-lg">
+          <h3 className="text-2xl font-bold text-blue-400 mb-6 flex items-center">
+            <span className="bg-blue-500 text-white p-2 rounded-lg mr-3">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+            </span>
+            Umiejętności techniczne
+          </h3>
           
-          <div className="flex flex-wrap justify-center gap-4">
-            {softSkills.map((skill, index) => (
-              <div
+          <div className="flex flex-wrap">
+            {technicalSkills.map((skill, index) => (
+              <div 
                 key={index}
-                className="bg-white px-6 py-3 rounded-full border border-gray-200 shadow-sm hover:shadow-md hover:border-blue-300 transition-all"
+                className="skill-tag"
               >
-                <span className="text-gray-700">{skill}</span>
+                {skill}
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        <div className="backdrop-blur-md bg-white/5 p-8 rounded-2xl border border-blue-500/20 shadow-lg">
+          <h3 className="text-2xl font-bold text-blue-400 mb-6 flex items-center">
+            <span className="bg-blue-500 text-white p-2 rounded-lg mr-3">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+              </svg>
+            </span>
+            Umiejętności miękkie
+          </h3>
+          
+          <div className="flex flex-wrap">
+            {softSkills.map((skill, index) => (
+              <div 
+                key={index}
+                className="skill-tag"
+              >
+                {skill}
               </div>
             ))}
           </div>

@@ -7,6 +7,9 @@ import ExperienceSection from "@/components/ExperienceSection";
 import EducationSection from "@/components/EducationSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
+import SkillsSection from "@/components/SkillsSection";
+import MemoryGame from "@/components/MemoryGame";
+import BubbleBackground from "@/components/BubbleBackground";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -16,7 +19,7 @@ const Index = () => {
     // Update metadata
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute("content", "Natalia Nitychoruk - IT Recruiter specjalizujący się w rekrutacji specjalistów IT i executive search. Ponad 6 lat doświadczenia w branży IT.");
+      metaDescription.setAttribute("content", "Natalia Nitychoruk - Specjalista AI, automatyzacja procesów i data science. Transformuję biznes poprzez innowacyjne rozwiązania.");
     }
     
     // Animation observer for scroll animations
@@ -45,13 +48,28 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen">
+    <div className="relative min-h-screen">
+      <BubbleBackground />
       <Navbar />
       <HeroSection />
       <AboutSection />
       <ProjectsSection />
       <ExperienceSection />
       <EducationSection />
+      <SkillsSection />
+      
+      <div className="container py-16 px-6 md:px-10">
+        <div className="backdrop-blur-md bg-white/5 rounded-3xl p-8 border border-blue-500/20 shadow-lg">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-blue-400">
+            Rozrywka - Memory Game
+          </h2>
+          <p className="text-center mb-8 max-w-2xl mx-auto">
+            Odpocznij na chwilę i sprawdź swoją pamięć w tej prostej grze. Znajdź wszystkie pary ikon w jak najmniejszej liczbie ruchów!
+          </p>
+          <MemoryGame />
+        </div>
+      </div>
+      
       <ContactSection />
       <Footer />
     </div>
