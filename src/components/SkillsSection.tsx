@@ -37,7 +37,7 @@ const SkillsSection = () => {
         Umiejętności
       </h2>
       
-      <div className={`${isMobile ? 'space-y-12' : 'grid grid-cols-2 gap-10'} max-w-3xl mx-auto`}>
+      <div className={`${isMobile ? 'space-y-12' : 'grid grid-cols-2 gap-10'}`}>
         <div className="backdrop-blur-md bg-white/5 p-8 rounded-2xl border border-blue-500/20 shadow-lg">
           <h3 className="text-2xl font-bold text-blue-400 mb-6 flex items-center">
             <span className="bg-blue-500 text-white p-2 rounded-lg mr-3">

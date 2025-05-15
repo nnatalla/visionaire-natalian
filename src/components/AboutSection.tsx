@@ -8,7 +8,7 @@ const AboutSection = () => {
         Oferta
       </h2>
 
-      <div className="text-lg md:text-xl space-y-4 mb-10 max-w-2xl mx-auto">
+      <div className="text-lg md:text-xl space-y-4 mb-10">
         <p>
           Pomagam przechodzić cyfrową transformację dzięki <strong>nowoczesnym rozwiązaniom AI</strong>. 
           Specjalizuję się w automatyzacji procesów, analizie danych, wdrażaniu rozwiązań opartych o AI.
@@ -22,7 +22,7 @@ const AboutSection = () => {
         </ul>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="card">
           <h3 className="text-xl font-bold mb-3">Automatyzacja procesów</h3>
           <ul className="list-none space-y-2">

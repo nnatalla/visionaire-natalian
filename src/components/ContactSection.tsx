@@ -8,12 +8,12 @@ const ContactSection = () => {
   
   return (
     <section id="kontakt" className="container py-16 px-6 md:px-10">
-      <div className="backdrop-blur-md bg-white/5 rounded-3xl p-8 border border-blue-500/20 shadow-lg max-w-3xl mx-auto">
+      <div className="backdrop-blur-md bg-white/5 rounded-3xl p-8 border border-blue-500/20 shadow-lg">
         <h2 className="text-3xl md:text-4xl font-bold mb-8 text-blue-400 pt-20 -mt-20 text-center">
           Kontakt
         </h2>
 
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <p className="text-xl mb-6">
               Chcesz dowiedzieć się więcej lub porozmawiać o współpracy?

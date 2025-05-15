@@ -8,7 +8,7 @@ const ExperienceSection = () => {
         Doświadczenie
       </h2>
 
-      <ul className="space-y-4 text-lg max-w-2xl mx-auto">
+      <ul className="space-y-4 text-lg">
         <li className="border-l-4 border-[#00F2FE] pl-4 transition-all duration-300 hover:border-[#FF61A6]">
           <strong>AI Consultant, Data Scientist</strong> – 6+ lat doświadczenia w branży IT i AI
         </li>

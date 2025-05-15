@@ -126,7 +126,7 @@ const MemoryGame = () => {
   };
 
   return (
-    <div className="memory-game max-w-xl mx-auto">
+    <div className="memory-game">
       <div className="text-center mb-4">
         {!gameStarted ? (
           <button 
