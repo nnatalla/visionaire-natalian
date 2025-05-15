@@ -78,7 +78,7 @@ const ProjectsSection = () => {
         Moje Projekty
       </h2>
 
-      <div className="story-container">
+      <div className="story-container max-w-xl mx-auto">
         <div className="story-progress">
           <div className="story-bar" style={{ width: `${progress}%` }}></div>
         </div>

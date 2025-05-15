@@ -8,7 +8,7 @@ const EducationSection = () => {
         Certyfikaty
       </h2>
 
-      <div className="flex flex-wrap justify-center gap-6">
+      <div className="flex flex-wrap justify-center gap-6 max-w-3xl mx-auto">
         <div className="cert-card">
           <img src="/placeholder.svg" alt="Google AI" className="mb-4" />
           <span className="block mb-2">Google Cloud Certified – Professional Data Engineer</span>
