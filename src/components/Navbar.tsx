@@ -47,7 +47,7 @@ const Navbar = () => {
   const navLinks = [
     { href: "#oferta", label: "Oferta" },
     { href: "#projekty", label: "Projekty" },
-    { href: "#doswiadczenie", label: "Doświadczenie" },
+    /* href: "#doświadczenie", label: "Doświadczenie" */
     { href: "#certyfikaty", label: "Certyfikaty" },
     { href: "#umiejetnosci", label: "Umiejętności" },
     { href: "#kontakt", label: "Kontakt" }

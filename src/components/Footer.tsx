@@ -15,7 +15,7 @@ const Footer = () => {
             <a href="#kontakt" className="text-white/50 hover:text-white/90 transition-colors">Kontakt</a>
           </div>
           <p className="mt-6 text-xs text-white/40">
-            Designed with 💙 for optimal user experience
+            📦 OUT OF THE BOX 📦
           </p>
         </div>
       </div>

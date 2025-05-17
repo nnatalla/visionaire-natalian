@@ -16,19 +16,19 @@ const ProjectsSection = () => {
 
   const stories: Story[] = [
     {
-      title: "Najczęstsze błędy początkujących w AI",
-      description: "Jak ich unikać?",
-      image: "/placeholder.svg"
+      title: "Automatyzacja procesu generowania dokumentów",
+      description: "Projekt dotyczący zastosowania automatyzacji oraz AI w procesie generowania typowych dokumentów dla firm typu: faktura, umowa,raport, prezentacja itp.",
+      image: "n8n1.png"
     },
     {
-      title: "System rekomendacji produktów",
-      description: "Personalizowane sugestie zwiększające sprzedaż o 18%.",
-      image: "/placeholder.svg"
+      title: "System webowy z zaawansowanym przetwarzaniem obrazów",
+        description: "System webowy służący do separacji sieci naczyń krwionośnych z badania angiograficznego dna oka",
+      image: "eye1.png"
     },
     {
-      title: "Analiza sentymentu w social media",
-      description: "Monitorowanie opinii klientów z 92% skutecznością.",
-      image: "/placeholder.svg"
+        title: "Analiza danych i prognozowanie",
+      description: "Czyszczenie danych, przygotowanie do przetwarzania oraz kompleksowa analiza predykcyjna (drzewa decyzyjne, regresja logistyczna itd.)",
+      image: "rstudio.jpg"
     }
   ];
 
@@ -74,7 +74,7 @@ const ProjectsSection = () => {
 
   return (
     <section id="projekty" className="container py-10 px-6 md:px-10">
-      <h2 className="text-3xl md:text-4xl font-bold mb-8 text-[#00F2FE] pt-20 -mt-20">
+      <h2 className="text-2xl md:text-3xl font-bold mb-8 text-[#00F2FE] pt-20 -mt-20">
         Moje Projekty
       </h2>
 

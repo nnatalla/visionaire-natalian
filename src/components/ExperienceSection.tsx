@@ -4,7 +4,7 @@ import React from 'react';
 const ExperienceSection = () => {
   return (
     <section id="doswiadczenie" className="container py-10 px-6 md:px-10">
-      <h2 className="text-3xl md:text-4xl font-bold mb-8 text-[#00F2FE] pt-20 -mt-20">
+      <h2 className="text-2xl md:text-3xl font-bold mb-8 text-[#00F2FE] pt-20 -mt-20">
         Doświadczenie
       </h2>
 

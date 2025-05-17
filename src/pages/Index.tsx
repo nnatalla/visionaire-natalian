@@ -54,13 +54,15 @@ const Index = () => {
       <HeroSection />
       <AboutSection />
       <ProjectsSection />
-      <ExperienceSection />
+     {/* wyłączenie sekcji doświadczenie
+         <ExperienceSection />
+         */}
       <EducationSection />
       <SkillsSection />
       
       <div className="container py-16 px-6 md:px-10">
         <div className="backdrop-blur-md bg-white/5 rounded-3xl p-8 border border-blue-500/20 shadow-lg">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-blue-400">
+          <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center text-blue-400">
             Rozrywka - Memory Game
           </h2>
           <p className="text-center mb-8 max-w-2xl mx-auto">
