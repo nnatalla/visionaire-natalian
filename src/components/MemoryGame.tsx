@@ -36,7 +36,7 @@ const MemoryGame = () => {
   const initGame = () => {
     // Select 6 random icons for a 3x4 grid (12 cards = 6 pairs)
     const shuffledIcons = [...ICONS].sort(() => 0.5 - Math.random()).slice(0, 6);
-    let newCards: CardType[] = [];
+    const newCards: CardType[] = [];
     
     // Create pairs
     shuffledIcons.forEach((icon, index) => {
@@ -59,9 +59,9 @@ const MemoryGame = () => {
     });
     
     // Shuffle cards
-    newCards = newCards.sort(() => 0.5 - Math.random());
+    const shuffledCards = newCards.sort(() => 0.5 - Math.random());
     
-    setCards(newCards);
+    setCards(shuffledCards);
     setFlippedCount(0);
     setFlippedIndexes([]);
     setMoves(0);
@@ -78,7 +78,7 @@ const MemoryGame = () => {
     }
 
     // Flip the card
-    let newCards = [...cards];
+    const newCards = [...cards];
     newCards[index].flipped = true;
     setCards(newCards);
     
@@ -97,7 +97,7 @@ const MemoryGame = () => {
       if (cards[firstIndex].type === cards[secondIndex].type) {
         // Match found
         setTimeout(() => {
-          let matchedCards = [...cards];
+          const matchedCards = [...cards];
           matchedCards[firstIndex].matched = true;
           matchedCards[secondIndex].matched = true;
           setCards(matchedCards);
@@ -114,7 +114,7 @@ const MemoryGame = () => {
       } else {
         // No match
         setTimeout(() => {
-          let flippedBackCards = [...cards];
+          const flippedBackCards = [...cards];
           flippedBackCards[firstIndex].flipped = false;
           flippedBackCards[secondIndex].flipped = false;
           setCards(flippedBackCards);

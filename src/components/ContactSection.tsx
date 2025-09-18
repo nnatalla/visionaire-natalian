@@ -1,76 +1,324 @@
 
-import React from 'react';
-import { Mail, Linkedin, MessageSquare } from 'lucide-react';
-import { useIsMobile } from '@/hooks/use-mobile';
-
+import React, { useState } from 'react';
+import emailjs from 'emailjs-com';
+import { Mail, Linkedin, MessageSquare, Send, MapPin, Phone, Clock, CheckCircle } from 'lucide-react';
 
 const ContactSection = () => {
-  const isMobile = useIsMobile();
-  
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setError(null);
+
+    // Uzupełnij poniższe wartości swoimi danymi z EmailJS
+    const SERVICE_ID = 'visionaire_formularz';
+    const TEMPLATE_ID = 'visionaire_formularz';
+    const USER_ID = 'omFE4XR8eRy1RdNOq';
+
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+      to_email: 'nitychoruknatalia.office@gmail.com'
+    };
+
+    try {
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, USER_ID);
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      setTimeout(() => setIsSubmitted(false), 3000);
+    } catch (err) {
+      setIsSubmitting(false);
+      setError('Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie lub napisz bezpośrednio na nitychoruknatalia.office@gmail.com.');
+    }
+  };
+
+  const contactMethods = [
+    {
+      icon: <MessageSquare className="w-6 h-6" />,
+      title: "Szybka wiadomość",
+      description: "Odpowiem najszybciej jak to możliwe",
+      action: "Napisz do mnie",
+      href: "https://mail.google.com/mail/?view=cm&to=nitychoruknatalia.office@gmail.com&su=Furmularz%20VisionAIre:%20Zapytanie%20ze%20strony%20wizyt%C3%B3wki&body=Dzień%20dobry%20Pani%20Natalio%2C%0A%0AChcia%C5%82bym%20porozmawia%C4%87%20o%20wsp%C3%B3%C5%82pracy.%0A%0A(Prosz%C4%99%20o%20podanie%20szczeg%C3%B3%C5%82%C3%B3w%20przedmiotowej%20wsp%C3%B3%C5%82pracy%2C%20tj.%20typ%20projektu%2C%20oczekiwany%20czas%20realizacji%20np.%20tryb%20pilny%20oraz%20inne%20niezb%C4%99dne%20szczeg%C3%B3%C5%82y.)%0A%0APozdrawiam%2C%0A",
+      email: "nitychoruknatalia.office@gmail.com",
+      color: "brand-neon"
+    },
+    {
+      icon: <Linkedin className="w-6 h-6" />,
+      title: "LinkedIn",
+      description: "Zapraszam do nawiązania kontaktu",
+      action: "Połącz się",
+      href: "https://www.linkedin.com/in/natalianitychoruk/",
+      color: "blue-500"
+    }
+  ];
+
+  const contactInfo = [
+    {
+      icon: <MapPin className="w-5 h-5" />,
+      label: "Lokalizacja",
+      value: "Warszawa, Polska"
+    },
+    {
+      icon: <Phone className="w-5 h-5" />,
+      label: "Telefon",
+      value: "+48 514 920 431"
+    },
+    {
+      icon: <Clock className="w-5 h-5" />,
+      label: "Czas odpowiedzi",
+      value: "< 24 h"
+    }
+  ];
+
   return (
-    <section id="kontakt" className="container py-16 px-6 md:px-10">
-      <div className="backdrop-blur-md bg-white/5 rounded-3xl p-8 border border-blue-500/20 shadow-lg">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-blue-400 pt-20 -mt-20 text-center">
-          Kontakt
-        </h2>
+    <section id="kontakt" className="section-padding relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 bg-gradient-to-b from-brand-dark via-brand-deep to-brand-accent"></div>
+      <div className="absolute top-20 left-10 w-72 h-72 bg-brand-cyan/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-20 right-10 w-80 h-80 bg-brand-purple/5 rounded-full blur-3xl"></div>
 
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-12">
-            <p className="text-base mb-6">
-              Chcesz dowiedzieć się więcej lub porozmawiać o współpracy?
-            </p>
-            
-            <div className={`${isMobile ? 'space-y-4' : 'flex justify-center gap-8'}`}>
-              <div className="backdrop-blur-md bg-blue-500/10 p-6 rounded-xl border border-blue-500/30 transition-all duration-300 hover:bg-blue-500/20">
-                <div className="flex flex-col items-center text-center">
-                  <div className="bg-blue-500/30 p-3 rounded-full mb-4">
-                    <MessageSquare size={24} className="text-blue-300" />
+      {/* Neural Network Overlay */}
+      <div className="neural-network-overlay">
+        {/* Neural Nodes */}
+        {[...Array(12)].map((_, i) => (
+          <div
+            key={`node-${i}`}
+            className="neural-node"
+            style={{
+              left: `${5 + (i * 8)}%`,
+              top: `5%`,
+              animationDelay: `${i * 0.3}s`
+            }}
+          />
+        ))}
+
+        {/* Neural Connections */}
+        {[...Array(8)].map((_, i) => (
+          <div
+            key={`connection-${i}`}
+            className="neural-connection"
+            style={{
+              left: `${10 + (i * 12)}%`,
+              top: `5%`,
+              width: `${80 + (i * 15)}px`,
+              animationDelay: `${i * 0.5}s`
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Particle System */}
+      <div className="particle-system">
+        {[...Array(8)].map((_, i) => (
+          <div
+            key={`particle-${i}`}
+            className="quantum-particle1"
+            style={{
+              left: `${15 + (i * 12)}%`,
+              top: `5%`,
+              animationDelay: `${i * 0.8}s`
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="section-container relative z-10">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-3 mb-6">
+            <div className="p-3 bg-brand-purple/10 rounded-full">
+              <Mail className="w-10 h-9 text-brand-purple margin-left: 100px" />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-brand-purple to-brand-cyan bg-clip-text text-transparent">
+              Kontakt
+            </h2>
+          </div>
+          <p className="text-xl text-brand-soft-white/80 max-w-3xl mx-auto">
+            Chcesz dowiedzieć się więcej lub porozmawiać o współpracy? Skontaktuj się ze mną!
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
+          {/* Contact Form */}
+          <div className="space-y-8">
+            <div className="glass-professional p-8">
+              <h3 className="text-2xl font-bold text-brand-white mb-6 flex items-center gap-3">
+                <Send className="w-6 h-6 text-brand-cyan" />
+                Wyślij wiadomość
+              </h3>
+
+              {isSubmitted ? (
+                <div className="text-center py-8">
+                  <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-4" />
+                  <h4 className="text-xl font-semibold text-brand-white mb-2">Wiadomość wysłana!</h4>
+                  <p className="text-brand-soft-white/70">Dziękuję za kontakt. Odpowiem najszybciej jak to możliwe.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  {error && (
+                    <div className="text-center text-red-500 font-semibold mb-4">{error}</div>
+                  )}
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-brand-soft-white mb-2">
+                        Imię i nazwisko *
+                      </label>
+                      <input
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-3 bg-brand-neon/5 border border-brand-neon/20 rounded-lg text-black placeholder-gray-600 focus:border-brand-neon focus:outline-none transition-colors duration-300"
+                        placeholder="Twoje imię"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-brand-soft-white mb-2">
+                        Email *
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-3 bg-brand-neon/5 border border-brand-neon/20 rounded-lg text-black placeholder-gray-600 focus:border-brand-neon focus:outline-none transition-colors duration-300"
+                        placeholder="twoj@email.com"
+                      />
+                    </div>
                   </div>
-                  <h3 className="text-base font-bold mb-2">Szybka wiadomość</h3>
-                  <p className="mb-4 text-sm text-white/70">
-                    Odpowiem najszybciej jak to możliwe
-                  </p>
-                  
-                <a href="https://mail.google.com/mail/?view=cm&to=natalia.nitychoruk@gmail.com&su=Zapytanie%20ze%20strony%20wizyt%C3%B3wki&body=Witaj%20Natalio%2C%0A%0AChcia%C5%82bym%20porozmawia%C4%87%20o%20wsp%C3%B3%C5%82pracy.%0A%0A(Prosz%C4%99%20o%20podanie%20szczeg%C3%B3%C5%82%C3%B3w%20przedmiotowej%20wsp%C3%B3%C5%82pracy%2C%20tj.%20typ%20projektu%2C%20oczekiwany%20czas%20realizacji%20np.%20tryb%20pilny%20oraz%20inne%20niezb%C4%99dne%20szczeg%C3%B3%C5%82y.)%0A%0APozdrawiam%2C%0A" 
-                    className="contact-button flex items-center justify-center gap-2 mt-2"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    ✉ Napisz do mnie
-                  </a>
 
-               <p className="text-xs text-white/70 flex items-center gap-2">
-                  <a
-                    href="mailto:nitychoruknatalia.office@gmail.com"
-                    className="text-white/70 hover:text-white transition-colors"
-                  >
-                    nitychoruknatalia.office@gmail.com
-                  </a>
-                </p> 
-                </div>
-              </div>
+                  <div>
+                    <label className="block text-sm font-medium text-brand-soft-white mb-2">
+                      Temat *
+                    </label>
+                    <input
+                      type="text"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 bg-brand-neon/5 border border-brand-neon/20 rounded-lg text-black placeholder-gray-600 focus:border-brand-neon focus:outline-none transition-colors duration-300"
+                      placeholder="Temat wiadomości"
+                    />
+                  </div>
 
-         <div className="backdrop-blur-md bg-blue-500/10 p-6 rounded-xl border border-blue-500/30 transition-all duration-300 hover:bg-blue-500/20">
-              <div className="flex flex-col items-center text-center">
-                <div className="bg-blue-500/30 p-3 rounded-full mb-4">
-                  <Linkedin size={24} className="text-blue-300" />
+                  <div>
+                    <label className="block text-sm font-medium text-brand-soft-white mb-2">
+                      Wiadomość *
+                    </label>
+                    <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
+                      rows={5}
+                      className="w-full px-4 py-3 bg-brand-neon/5 border border-brand-neon/20 rounded-lg text-black placeholder-gray-600 focus:border-brand-neon focus:outline-none transition-colors duration-300 resize-none"
+                      placeholder="Opisz swój projekt lub zapytanie..."
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full px-8 py-4 bg-gradient-to-r from-brand-neon to-brand-cyan text-brand-dark font-semibold rounded-lg hover:shadow-lg hover:shadow-brand-neon/25 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <div className="w-5 h-5 border-2 border-brand-dark border-t-transparent rounded-full animate-spin"></div>
+                        Wysyłanie...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-5 h-5" />
+                        Wyślij wiadomość
+                      </>
+                    )}
+                  </button>
+                </form>
+              )}
+            </div>
+          </div>
+
+          {/* Contact Methods & Info */}
+          <div className="space-y-8">
+            {/* Contact Methods */}
+            <div className="space-y-6">
+              {contactMethods.map((method, index) => (
+                <div key={index} className="glass-professional p-6 group hover:scale-105 transition-all duration-300">
+                  <div className="flex items-start gap-4">
+                    <div className={`p-3 bg-${method.color}/10 rounded-full group-hover:bg-${method.color}/20 transition-colors duration-300`}>
+                      <div className={`text-${method.color}`}>{method.icon}</div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-lg font-semibold text-brand-white mb-2">{method.title}</h4>
+                      <p className="text-brand-soft-white/70 mb-4">{method.description}</p>
+                      <a
+                        href={method.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`inline-flex items-center gap-2 px-6 py-2 bg-${method.color} text-white font-medium rounded-full hover:bg-opacity-90 transition-colors duration-300`}
+                      >
+                        {method.action}
+                        <Send className="w-4 h-4" />
+                      </a>
+                      {method.email && (
+                        <p className="text-sm text-brand-soft-white/60 mt-2">{method.email}</p>
+                      )}
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-lg font-bold mb-2">LinkedIn</h3>
-                <p className="mb-4 text-sm text-white/70">
-                  Zapraszam do nawiązania kontaktu
-                </p>
-                <a
-                  href="https://www.linkedin.com/in/natalianitychoruk/"
-                  className="contact-button inline-block mt-2"
-                  style={{ background: 'linear-gradient(90deg, #0077B5, #00a0dc)' }}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Linkedin size={18} className="inline-block align-middle mr-2" />
-                  <span className="inline-block align-middle">Połącz się</span>
-                </a>
+              ))}
+            </div>
+
+            {/* Contact Info */}
+            <div className="glass-professional p-6">
+              <h4 className="text-lg font-semibold text-brand-white mb-6">Informacje kontaktowe</h4>
+              <div className="space-y-4">
+                {contactInfo.map((info, index) => (
+                  <div key={index} className="flex items-center gap-4">
+                    <div className="p-2 bg-brand-purple/10 rounded-lg">
+                      <div className="text-brand-purple">{info.icon}</div>
+                    </div>
+                    <div>
+                      <div className="text-sm text-brand-soft-white/60">{info.label}</div>
+                      <div className="text-brand-white font-medium">{info.value}</div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
+
+            {/* Availability Status */}
+            <div className="glass-professional p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
+                <span className="text-brand-white font-medium">Aktualnie dostępna</span>
+              </div>
+              <p className="text-brand-soft-white/70 text-sm">
+                Przyjmuję nowe projekty i jestem otwarta na współpracę.
+                Zapraszam do kontaktu!
+              </p>
             </div>
           </div>
         </div>
