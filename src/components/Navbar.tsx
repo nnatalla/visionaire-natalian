@@ -1,12 +1,14 @@
 
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Home, Briefcase, User, Mail, Sparkles, LightbulbIcon, LucideLightbulb } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 type NavbarProps = {
   handleNav?: (e: React.MouseEvent<HTMLAnchorElement>, href: string) => void;
 };
 
 const Navbar: React.FC<NavbarProps> = ({ handleNav }) => {
+  const { t, i18n } = useTranslation();
   const [activeLink, setActiveLink] = useState<string>("#hero");
   const [isSticky, setIsSticky] = useState<boolean>(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
@@ -23,9 +25,13 @@ const Navbar: React.FC<NavbarProps> = ({ handleNav }) => {
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const element = document.querySelector(sections[i]) as HTMLElement;
-        if (element && scrollY >= element.offsetTop - 200) {
-          setActiveLink(sections[i]);
-          break;
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          const absoluteTop = window.pageYOffset + rect.top;
+          if (scrollY >= absoluteTop - 110) {
+            setActiveLink(sections[i]);
+            break;
+          }
         }
       }
     };
@@ -51,24 +57,27 @@ const Navbar: React.FC<NavbarProps> = ({ handleNav }) => {
     setMobileMenuOpen(false);
     const element = document.querySelector(href) as HTMLElement;
     if (element) {
+      // Use getBoundingClientRect for accurate positioning with scaling
+      const rect = element.getBoundingClientRect();
+      const absoluteTop = window.pageYOffset + rect.top;
       window.scrollTo({
-        top: element.offsetTop - 100,
+        top: absoluteTop - 10,
         behavior: 'smooth'
       });
     }
   };
 
   const navLinks = [
-    { href: "#hero", label: "Start", icon: <Home className="w-4 h-4" /> },
-    { href: "#projekty", label: "Projekty", icon: <Briefcase className="w-4 h-4" /> },
-    { href: "#o-mnie", label: "O mnie", icon: <User className="w-4 h-4" /> },
-    { href: "#kontakt", label: "Kontakt", icon: <Mail className="w-4 h-4" /> }
+    { href: "#hero", label: t("Start"), icon: <Home className="w-4 h-4" /> },
+    { href: "#projekty", label: t("Projekty"), icon: <Briefcase className="w-4 h-4" /> },
+    { href: "#o-mnie", label: t("O mnie"), icon: <User className="w-4 h-4" /> },
+    { href: "#kontakt", label: t("Kontakt"), icon: <Mail className="w-4 h-4" /> }
   ];
 
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 w-full z-[9999] transform-gpu backface-hidden navbar-force-fixed ${
           isSticky
             ? 'bg-brand-dark/90 backdrop-blur-xl border-b border-brand-neon/20 shadow-2xl shadow-brand-neon/10'
             : 'bg-transparent'
@@ -83,9 +92,9 @@ const Navbar: React.FC<NavbarProps> = ({ handleNav }) => {
               </div>
               <div className="hidden md:block">
                 <p className="text-xl font-bold text-brand-soft-white">
-                  VisionAIre
+                  {t("VisionAIre")}
                 </p>
-                <p className="text-xs text-brand-soft-white/60">Natalia Nitychoruk</p>
+                <p className="text-xs text-brand-soft-white/60">{t("Natalia Nitychoruk")}</p>
               </div>
             </div>
 
@@ -107,6 +116,14 @@ const Navbar: React.FC<NavbarProps> = ({ handleNav }) => {
                 </a>
               ))}
             </div>
+
+            {/* Language Switcher */}
+            <button
+              onClick={() => i18n.changeLanguage(i18n.language === 'pl' ? 'en' : 'pl')}
+              className="hidden md:flex items-center gap-2 px-4 py-2 bg-brand-neon/10 text-brand-neon rounded-full font-medium hover:bg-brand-neon/20 transition-colors duration-300"
+            >
+              <span className="text-sm font-bold">{i18n.language === 'pl' ? 'ENG' : 'PL'}</span>
+            </button>
 
             {/* Mobile menu button */}
             <button
@@ -141,9 +158,9 @@ const Navbar: React.FC<NavbarProps> = ({ handleNav }) => {
               </div>
               <div>
                 <h1 className="text-2xl font-bold bg-gradient-to-r from-brand-neon to-brand-cyan bg-clip-text text-transparent">
-                  VisionAIre
+                  {t("VisionAIre")}
                 </h1>
-                <p className="text-sm text-brand-soft-white/60">Natalia Nitychoruk</p>
+                <p className="text-sm text-brand-soft-white/60">{t("Natalia Nitychoruk")}</p>
               </div>
             </div>
           </div>
@@ -171,10 +188,13 @@ const Navbar: React.FC<NavbarProps> = ({ handleNav }) => {
             ))}
 
             <button
-              className="mt-8 w-full bg-brand-neon/10 text-brand-neon py-4 rounded-2xl font-medium hover:bg-brand-neon/20 transition-colors duration-300"
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={() => {
+                i18n.changeLanguage(i18n.language === 'pl' ? 'en' : 'pl');
+                setMobileMenuOpen(false);
+              }}
+              className="w-full bg-brand-neon/10 text-brand-neon py-4 rounded-2xl font-medium hover:bg-brand-neon/20 transition-colors duration-300"
             >
-              Zamknij menu
+              {i18n.language === 'pl' ? 'English' : 'Polski'}
             </button>
           </div>
 

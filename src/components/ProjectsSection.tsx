@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Play, Pause, ExternalLink, Code, Users, Calendar, Star, Layers, Zap, Atom, Sparkles } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 interface Project {
   title: string;
@@ -16,6 +17,7 @@ interface Project {
 }
 
 const ProjectsSection = () => {
+  const { t } = useTranslation();
   const [activeSlide, setActiveSlide] = useState(0);
   const [progress, setProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -24,50 +26,50 @@ const ProjectsSection = () => {
 
   const projects: Project[] = [
     {
-      title: "Automatyzacja generowania typowych dokumentów",
-      description: "Zaawansowany system automatyzacji wykorzystujący AI do generowania typowych dokumentów biznesowych. Implementacja algorytmów do rozpoznawania wzorców i automatycznego wypełniania formularzy. Generowanie dokumentów takich jak: faktura, raport, prezentacja, umowa.",
+      title: t("Automatyzacja generowania typowych dokumentów"),
+      description: t("Zaawansowany system automatyzacji wykorzystujący AI do generowania typowych dokumentów biznesowych. Implementacja algorytmów do rozpoznawania wzorców i automatycznego wypełniania formularzy. Generowanie dokumentów takich jak: faktura, raport, prezentacja, umowa."),
       image: "n8n.jpeg",
       technologies: ["JavaScript", "n8n", "API", "HTML"],
-      category: "Automatyzacja + AI",
-      duration: "2 tygodnie",
-      teamSize: "Autorski projekt",
-      impact: "97% redukcja czasu generowania dokumentów",
+      category: t("Automatyzacja + AI"),
+      duration: t("2 tygodnie"),
+      teamSize: t("Autorski projekt"),
+      impact: `97% ${t("redukcja czasu generowania dokumentów")}`,
       demoUrl: "#",
       githubUrl: "#"
     },
     {
-      title: "System webowy z zaawansowanym przetwarzaniem obrazów",
-      description: "Innowacyjny system do analizy angiograficznych badań dna oka. Automatyczna segmentacja naczyń krwionośnych i wykrywanie patologii.",
+      title: t("System webowy z zaawansowanym przetwarzaniem obrazów"),
+      description: t("Innowacyjny system do analizy angiograficznych badań dna oka. Automatyczna segmentacja naczyń krwionośnych i wykrywanie patologii."),
       image: "eye1.png",
       technologies: ["PostgreSQL", "Python", "OpenCV", "Amazon S3", "Amazon EC2", "Gunicorn", "Nginx", "Django"],
-      category: "Medyczne systemy",
-      duration: "5 miesięcy",
-      teamSize: "Autorski projekt",
-      impact: "95% dokładności diagnozy wstępnej chorób, szybsze wykrycie patologii",
+      category: t("Medyczne systemy"),
+      duration: t("5 miesięcy"),
+      teamSize: t("Autorski projekt"),
+      impact: `95% ${t("dokładności diagnozy wstępnej chorób, szybsze wykrycie patologii")}`,
       demoUrl: "#",
       githubUrl: "#"
     },
     {
-      title: "Analiza danych i prognozowanie biznesowe",
-      description: "Kompleksowy system analizy predykcyjnej wykorzystujący zaawansowane algorytmy ML. Implementacja drzew decyzyjnych, regresji logistycznej i sieci neuronowych dla prognozowania trendów biznesowych.",
+      title: t("Analiza danych i prognozowanie biznesowe"),
+      description: t("Kompleksowy system analizy predykcyjnej wykorzystujący zaawansowane algorytmy ML. Implementacja drzew decyzyjnych, regresji logistycznej i sieci neuronowych dla prognozowania trendów biznesowych."),
       image: "rstudio.jpeg",
       technologies: ["R", "Python", "scikit-learn", "PowerBI", "SQL"],
-      category: "Business Intelligence",
-      duration: "3 miesiące",
-      teamSize: "Autorski projekt",
-      impact: "Wsparcie prognozowania i decyzji biznesowych",
+      category: t("Business Intelligence"),
+      duration: t("3 miesiące"),
+      teamSize: t("Autorski projekt"),
+      impact: t("Wsparcie prognozowania i decyzji biznesowych"),
       demoUrl: "#",
       githubUrl: "#"
     },
     {
-      title: "System generujący pisma do komorników",
-      description: "Automatyczny system generowania profesjonalnych pism prawnych na podstawie automatycznie odczytanych danych z pism przychodzących. Integracja z bazami danych i automatyczna walidacja dokumentów. Dzienne raportu wysłanych pism.",
+      title: t("System generujący pisma do komorników"),
+      description: t("Automatyczny system generowania profesjonalnych pism prawnych na podstawie automatycznie odczytanych danych z pism przychodzących. Integracja z bazami danych i automatyczna walidacja dokumentów. Dzienne raportu wysłanych pism."),
       image: "flask.jpeg",
       technologies: ["Flask", "Nginx", "SQLite", "Google Sheets", "AI API", "Tesseract OCR"],
-      category: "Automatyzacja + AI",
-      duration: "1 miesiąc",
-      teamSize: "Autorski projekt",
-      impact: "90% redukcja czasu odpowiedzi i 100% dokładności danych",
+      category: t("Automatyzacja + AI"),
+      duration: t("1 miesiąc"),
+      teamSize: t("Autorski projekt"),
+      impact: `90% ${t("redukcja czasu odpowiedzi i 100% dokładności danych")}`,
       demoUrl: "#",
       githubUrl: "#"
     }
@@ -197,11 +199,11 @@ const ProjectsSection = () => {
               <Code className="w-8 h-8 text-brand-neon" />
             </div>
             <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-brand-neon to-brand-purple bg-clip-text text-transparent">
-              Moje Projekty
+              {t("Moje Projekty")}
             </h2>
           </div>
           <p className="text-xl text-brand-soft-white/80 max-w-3xl mx-auto">
-            Odkryj moje najnowsze realizacje – od automatyzacji procesów biznesowych po innowacyjne rozwiązania AI
+            {t("Odkryj moje najnowsze realizacje – od automatyzacji procesów biznesowych po innowacyjne rozwiązania AI")}
           </p>
         </div>
 
@@ -275,14 +277,14 @@ const ProjectsSection = () => {
                       <div className="glass-professional p-4">
                         <div className="flex items-center gap-2 mb-2">
                           <Users className="w-5 h-5 text-brand-cyan" />
-                          <span className="text-sm text-brand-soft-white/60">Zespół</span>
+                          <span className="text-sm text-brand-soft-white/60">{t("Zespół")}</span>
                         </div>
                         <div className="text-lg font-semibold text-brand-white">{project.teamSize}</div>
                       </div>
                       <div className="glass-professional p-4">
                         <div className="flex items-center gap-2 mb-2">
                           <Star className="w-5 h-5 text-brand-purple" />
-                          <span className="text-sm text-brand-soft-white/60">Wpływ</span>
+                          <span className="text-sm text-brand-soft-white/60">{t("Wpływ")}</span>
                         </div>
                         <div className="text-lg font-semibold text-brand-white">{project.impact}</div>
                       </div>
@@ -290,7 +292,7 @@ const ProjectsSection = () => {
 
                     {/* Technologies */}
                     <div>
-                      <h4 className="text-lg font-semibold text-brand-white mb-3">Technologie</h4>
+                      <h4 className="text-lg font-semibold text-brand-white mb-3">{t("Technologie")}</h4>
                       <div className="flex flex-wrap gap-2">
                         {project.technologies.map((tech, techIndex) => (
                           <span
@@ -315,7 +317,7 @@ const ProjectsSection = () => {
                           }}
                         >
                           <ExternalLink className="w-4 h-4" />
-                          Chcę mieć to u siebie!
+                          {t("Chcę mieć to u siebie!")}
                         </a>
                       )}
                      {/* {project.githubUrl && (
@@ -324,7 +326,7 @@ const ProjectsSection = () => {
                           className="flex items-center gap-2 px-6 py-3 bg-brand-neon/10 text-brand-neon border border-brand-neon/20 rounded-full hover:bg-brand-neon/20 transition-colors duration-300"
                         >
                           <Code className="w-4 h-4" />
-                          Kod źródłowy
+                          {t("Kod źródłowy")}
                         </a>
                       )}*/}
                     </div>
@@ -348,14 +350,14 @@ const ProjectsSection = () => {
             <button
               className="absolute left-1 top-1/2 -translate-y-1/2 p-3 hover:bg-brand-neon/10 rounded-full transition-all duration-300 z-20"
               onClick={prevSlide}
-              aria-label="Poprzedni projekt"
+              aria-label={t("Poprzedni projekt")}
             >
               <ChevronLeft className="w-6 h-6 text-brand-neon" />
             </button>
             <button
               className="absolute right-1 top-1/2 -translate-y-1/2 p-3 hover:bg-brand-neon/10 rounded-full transition-all duration-300 z-20"
               onClick={nextSlide}
-              aria-label="Następny projekt"
+              aria-label={t("Następny projekt")}
             >
               <ChevronRight className="w-6 h-6 text-brand-neon" />
             </button>

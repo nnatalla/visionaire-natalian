@@ -30,8 +30,10 @@ const AboutMePage = () => {
       setTimeout(() => {
         const el = document.querySelector(href) as HTMLElement;
         if (el) {
+          const rect = el.getBoundingClientRect();
+          const absoluteTop = window.pageYOffset + rect.top;
           window.scrollTo({
-            top: el.offsetTop - 100,
+            top: absoluteTop - 10,
             behavior: 'smooth'
           });
         }

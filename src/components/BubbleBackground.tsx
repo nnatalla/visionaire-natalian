@@ -35,10 +35,11 @@ const BubbleBackground = () => {
   }, []);
   
   const createRandomBubble = (id: number): Bubble => {
-    // Random position, size and movement
+    // Random position, size and movement - adjusted for 70% scale
     const size = Math.random() * 150 + 50; // 50px - 200px
-    const left = Math.random() * window.innerWidth;
-    const top = Math.random() * window.innerHeight;
+    const scale = 0.7;
+    const left = Math.random() * (window.innerWidth / scale);
+    const top = Math.random() * (window.innerHeight / scale);
     const moveX = (Math.random() - 0.5) * 200;
     const moveY = (Math.random() - 0.5) * 200;
     const duration = Math.random() * 10 + 10; // 10s - 20s

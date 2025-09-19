@@ -1,9 +1,11 @@
 
 import React, { useState } from 'react';
 import emailjs from 'emailjs-com';
+import { useTranslation } from 'react-i18next';
 import { Mail, Linkedin, MessageSquare, Send, MapPin, Phone, Clock, CheckCircle } from 'lucide-react';
 
 const ContactSection = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -47,25 +49,25 @@ const ContactSection = () => {
       setTimeout(() => setIsSubmitted(false), 3000);
     } catch (err) {
       setIsSubmitting(false);
-      setError('Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie lub napisz bezpośrednio na nitychoruknatalia.office@gmail.com.');
+      setError(t('Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie lub napisz bezpośrednio na nitychoruknatalia.office@gmail.com.'));
     }
   };
 
   const contactMethods = [
     {
       icon: <MessageSquare className="w-6 h-6" />,
-      title: "Szybka wiadomość",
-      description: "Odpowiem najszybciej jak to możliwe",
-      action: "Napisz do mnie",
+      title: t("Szybka wiadomość"),
+      description: t("Odpowiem najszybciej jak to możliwe"),
+      action: t("Napisz do mnie"),
       href: "https://mail.google.com/mail/?view=cm&to=nitychoruknatalia.office@gmail.com&su=Furmularz%20VisionAIre:%20Zapytanie%20ze%20strony%20wizyt%C3%B3wki&body=Dzień%20dobry%20Pani%20Natalio%2C%0A%0AChcia%C5%82bym%20porozmawia%C4%87%20o%20wsp%C3%B3%C5%82pracy.%0A%0A(Prosz%C4%99%20o%20podanie%20szczeg%C3%B3%C5%82%C3%B3w%20przedmiotowej%20wsp%C3%B3%C5%82pracy%2C%20tj.%20typ%20projektu%2C%20oczekiwany%20czas%20realizacji%20np.%20tryb%20pilny%20oraz%20inne%20niezb%C4%99dne%20szczeg%C3%B3%C5%82y.)%0A%0APozdrawiam%2C%0A",
       email: "nitychoruknatalia.office@gmail.com",
       color: "brand-neon"
     },
     {
       icon: <Linkedin className="w-6 h-6" />,
-      title: "LinkedIn",
-      description: "Zapraszam do nawiązania kontaktu",
-      action: "Połącz się",
+      title: t("LinkedIn"),
+      description: t("Zapraszam do nawiązania kontaktu"),
+      action: t("Połącz się"),
       href: "https://www.linkedin.com/in/natalianitychoruk/",
       color: "blue-500"
     }
@@ -74,18 +76,18 @@ const ContactSection = () => {
   const contactInfo = [
     {
       icon: <MapPin className="w-5 h-5" />,
-      label: "Lokalizacja",
-      value: "Warszawa, Polska"
+      label: t("Lokalizacja"),
+      value: t("Warszawa, Polska")
     },
     {
       icon: <Phone className="w-5 h-5" />,
-      label: "Telefon",
-      value: "+48 514 920 431"
+      label: t("Telefon"),
+      value: t("+48 514 920 431")
     },
     {
       icon: <Clock className="w-5 h-5" />,
-      label: "Czas odpowiedzi",
-      value: "< 24 h"
+      label: t("Czas odpowiedzi"),
+      value: t("< 24 h")
     }
   ];
 
@@ -149,11 +151,11 @@ const ContactSection = () => {
               <Mail className="w-10 h-9 text-brand-purple margin-left: 100px" />
             </div>
             <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-brand-purple to-brand-cyan bg-clip-text text-transparent">
-              Kontakt
+              {t("Kontakt")}
             </h2>
           </div>
           <p className="text-xl text-brand-soft-white/80 max-w-3xl mx-auto">
-            Chcesz dowiedzieć się więcej lub porozmawiać o współpracy? Skontaktuj się ze mną!
+            {t("Chcesz dowiedzieć się więcej lub porozmawiać o współpracy? Skontaktuj się ze mną!")}
           </p>
         </div>
 
@@ -163,14 +165,14 @@ const ContactSection = () => {
             <div className="glass-professional p-8">
               <h3 className="text-2xl font-bold text-brand-white mb-6 flex items-center gap-3">
                 <Send className="w-6 h-6 text-brand-cyan" />
-                Wyślij wiadomość
+                {t("Wyślij wiadomość")}
               </h3>
 
               {isSubmitted ? (
                 <div className="text-center py-8">
                   <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-4" />
-                  <h4 className="text-xl font-semibold text-brand-white mb-2">Wiadomość wysłana!</h4>
-                  <p className="text-brand-soft-white/70">Dziękuję za kontakt. Odpowiem najszybciej jak to możliwe.</p>
+                  <h4 className="text-xl font-semibold text-brand-white mb-2">{t("Wiadomość wysłana!")}</h4>
+                  <p className="text-brand-soft-white/70">{t("Dziękuję za kontakt. Odpowiem najszybciej jak to możliwe.")}</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -180,7 +182,7 @@ const ContactSection = () => {
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium text-brand-soft-white mb-2">
-                        Imię i nazwisko *
+                        {t("Imię i nazwisko")} *
                       </label>
                       <input
                         type="text"
@@ -189,12 +191,12 @@ const ContactSection = () => {
                         onChange={handleInputChange}
                         required
                         className="w-full px-4 py-3 bg-brand-neon/5 border border-brand-neon/20 rounded-lg text-black placeholder-gray-600 focus:border-brand-neon focus:outline-none transition-colors duration-300"
-                        placeholder="Twoje imię"
+                        placeholder={t("Twoje imię")}
                       />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-brand-soft-white mb-2">
-                        Email *
+                        {t("Email")} *
                       </label>
                       <input
                         type="email"
@@ -203,14 +205,14 @@ const ContactSection = () => {
                         onChange={handleInputChange}
                         required
                         className="w-full px-4 py-3 bg-brand-neon/5 border border-brand-neon/20 rounded-lg text-black placeholder-gray-600 focus:border-brand-neon focus:outline-none transition-colors duration-300"
-                        placeholder="twoj@email.com"
+                        placeholder={t("twoj@email.com")}
                       />
                     </div>
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium text-brand-soft-white mb-2">
-                      Temat *
+                      {t("Temat")} *
                     </label>
                     <input
                       type="text"
@@ -219,13 +221,13 @@ const ContactSection = () => {
                       onChange={handleInputChange}
                       required
                       className="w-full px-4 py-3 bg-brand-neon/5 border border-brand-neon/20 rounded-lg text-black placeholder-gray-600 focus:border-brand-neon focus:outline-none transition-colors duration-300"
-                      placeholder="Temat wiadomości"
+                      placeholder={t("Temat wiadomości")}
                     />
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium text-brand-soft-white mb-2">
-                      Wiadomość *
+                      {t("Wiadomość")} *
                     </label>
                     <textarea
                       name="message"
@@ -234,7 +236,7 @@ const ContactSection = () => {
                       required
                       rows={5}
                       className="w-full px-4 py-3 bg-brand-neon/5 border border-brand-neon/20 rounded-lg text-black placeholder-gray-600 focus:border-brand-neon focus:outline-none transition-colors duration-300 resize-none"
-                      placeholder="Opisz swój projekt lub zapytanie..."
+                      placeholder={t("Opisz swój projekt lub zapytanie...")}
                     />
                   </div>
 
@@ -246,12 +248,12 @@ const ContactSection = () => {
                     {isSubmitting ? (
                       <>
                         <div className="w-5 h-5 border-2 border-brand-dark border-t-transparent rounded-full animate-spin"></div>
-                        Wysyłanie...
+                        {t("Wysyłanie...")}
                       </>
                     ) : (
                       <>
                         <Send className="w-5 h-5" />
-                        Wyślij wiadomość
+                        {t("Wyślij wiadomość")}
                       </>
                     )}
                   </button>
@@ -293,7 +295,7 @@ const ContactSection = () => {
 
             {/* Contact Info */}
             <div className="glass-professional p-6">
-              <h4 className="text-lg font-semibold text-brand-white mb-6">Informacje kontaktowe</h4>
+              <h4 className="text-lg font-semibold text-brand-white mb-6">{t("Informacje kontaktowe")}</h4>
               <div className="space-y-4">
                 {contactInfo.map((info, index) => (
                   <div key={index} className="flex items-center gap-4">
@@ -313,11 +315,10 @@ const ContactSection = () => {
             <div className="glass-professional p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
-                <span className="text-brand-white font-medium">Aktualnie dostępna</span>
+                <span className="text-brand-white font-medium">{t("Aktualnie dostępna")}</span>
               </div>
               <p className="text-brand-soft-white/70 text-sm">
-                Przyjmuję nowe projekty i jestem otwarta na współpracę.
-                Zapraszam do kontaktu!
+                {t("Przyjmuję nowe projekty i jestem otwarta na współpracę. Zapraszam do kontaktu!")}
               </p>
             </div>
           </div>

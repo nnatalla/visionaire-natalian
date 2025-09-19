@@ -1,12 +1,14 @@
 
 import React from 'react';
-import { Heart, Mail, Phone, MapPin, Github, Linkedin, ExternalLink, Sparkles, ArrowUp, BrainIcon, CloudLightning, LightbulbIcon } from 'lucide-react';
+import { Heart, Mail, Phone, MapPin, Instagram, Github, Linkedin, ExternalLink, Sparkles, ArrowUp, BrainIcon, CloudLightning, LightbulbIcon } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 type FooterProps = {
   handleNav?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 };
 
 const Footer: React.FC<FooterProps> = ({ handleNav }) => {
+  const { t } = useTranslation();
   const handleFooterNav = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (handleNav) {
       handleNav(e);
@@ -23,8 +25,10 @@ const Footer: React.FC<FooterProps> = ({ handleNav }) => {
       e.preventDefault();
       const el = document.querySelector(href) as HTMLElement;
       if (el) {
+        const rect = el.getBoundingClientRect();
+        const absoluteTop = window.pageYOffset + rect.top;
         window.scrollTo({
-          top: el.offsetTop - 100,
+          top: absoluteTop - 10,
           behavior: 'smooth'
         });
       }
@@ -32,6 +36,8 @@ const Footer: React.FC<FooterProps> = ({ handleNav }) => {
   };
 
   const scrollToTop = () => {
+    // Account for 70% scaling - adjust offset calculation
+    const scalingFactor = 0.7;
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
@@ -39,46 +45,46 @@ const Footer: React.FC<FooterProps> = ({ handleNav }) => {
   };
 
   const quickLinks = [
-    { href: "#oferta", label: "Oferta" },
-    { href: "#projekty", label: "Projekty" },
-    { href: "#o-mnie", label: "O mnie" },
-    { href: "#kontakt", label: "Kontakt" }
+    { href: "#oferta", label: t("Oferta") },
+    { href: "#projekty", label: t("Projekty") },
+    { href: "#o-mnie", label: t("O mnie") },
+    { href: "#kontakt", label: t("Kontakt") }
   ];
 
   const contactInfo = [
     {
       icon: <Mail className="w-5 h-5" />,
-      label: "Email",
+      label: t("Email"),
       value: "nitychoruknatalia.office@gmail.com",
       href: "https://mail.google.com/mail/?view=cm&to=nitychoruknatalia.office@gmail.com&su=Furmularz%20VisionAIre:%20Zapytanie%20ze%20strony%20wizyt%C3%B3wki&body=Dzień%20dobry%20Pani%20Natalio%2C%0A%0AChcia%C5%82bym%20porozmawia%C4%87%20o%20wsp%C3%B3%C5%82pracy.%0A%0A(Prosz%C4%99%20o%20podanie%20szczeg%C3%B3%C5%82%C3%B3w%20przedmiotowej%20wsp%C3%B3%C5%82pracy%2C%20tj.%20typ%20projektu%2C%20oczekiwany%20czas%20realizacji%20np.%20tryb%20pilny%20oraz%20inne%20niezb%C4%99dne%20szczeg%C3%B3%C5%82y.)%0A%0APozdrawiam%2C%0A",
 
     },
     {
       icon: <Phone className="w-5 h-5" />,
-      label: "Telefon",
+      label: t("Telefon"),
       value: "+48 514 920 431",
       href: "tel:+48514920431"
     },
     {
       icon: <MapPin className="w-5 h-5" />,
-      label: "Lokalizacja",
-      value: "Warszawa, Polska",
+      label: t("Lokalizacja"),
+      value: t("Warszawa, Polska"),
       href: "#"
     }
   ];
 
   const socialLinks = [
     {
-      icon: <Linkedin className="w-5 h-5" />,
+      icon: <Linkedin className="w-8 h-8" />,
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/natalianitychoruk/",
       color: "hover:text-blue-400"
     },
     {
-      icon: <Github className="w-5 h-5" />,
-      label: "GitHub",
-      href: "#",
-      color: "hover:text-gray-300"
+      icon: <Instagram className="w-8 h-8" />,
+      label: "Instagram",
+      href: "https://www.instagram.com/visionaire.ai/",
+      color: "hover:text-pink-400"
     }
   ];
 
@@ -149,13 +155,12 @@ const Footer: React.FC<FooterProps> = ({ handleNav }) => {
                     <h3 className="text-2xl font-bold bg-gradient-to-r from-brand-neon to-brand-cyan bg-clip-text ">
                       VisionAIre
                     </h3>
-                    <p className="text-brand-soft-white/60">Natalia Nitychoruk</p>
+                    <p className="text-brand-soft-white/60">{t("Natalia Nitychoruk")}</p>
                   </div>
                 </div>
 
                 <p className="text-brand-soft-white/80 leading-relaxed mb-6 max-w-md">
-                  Specjalizuję się w nowoczesnych rozwiązaniach AI, automatyzacji i analizie danych.
-                  Pomagam firmom wdrażać technologie, które usprawniają ich biznes i otwierają nowe możliwości rozwoju.
+                  {t("Specjalizuję się w nowoczesnych rozwiązaniach AI, automatyzacji i analizie danych. Pomagam firmom wdrażać technologie, które usprawniają ich biznes i otwierają nowe możliwości rozwoju.")}
                 </p>
 
                 <div className="flex gap-3">
@@ -176,7 +181,7 @@ const Footer: React.FC<FooterProps> = ({ handleNav }) => {
 
               {/* Quick Links */}
               <div>
-                <h4 className="text-lg font-semibold text-brand-white mb-6">Szybkie linki</h4>
+                <h4 className="text-lg font-semibold text-brand-white mb-6">{t("Szybkie linki")}</h4>
                 <div className="space-y-3">
                   {quickLinks.map((link, index) => (
                     <a
@@ -193,7 +198,7 @@ const Footer: React.FC<FooterProps> = ({ handleNav }) => {
 
               {/* Contact Info */}
               <div>
-                <h4 className="text-lg font-semibold text-brand-white mb-6">Kontakt</h4>
+                <h4 className="text-lg font-semibold text-brand-white mb-6">{t("Kontakt info")}</h4>
                 <div className="space-y-4">
                   {contactInfo.map((info, index) => (
                     <a
@@ -216,9 +221,9 @@ const Footer: React.FC<FooterProps> = ({ handleNav }) => {
 
             {/* Newsletter/CTA Section */}
             <div className="glass-professional p-8 text-center mb-12">
-              <h4 className="text-2xl font-bold text-brand-white mb-4">Zainteresowany współpracą?</h4>
+              <h4 className="text-2xl font-bold text-brand-white mb-4">{t("Zainteresowany współpracą?")}</h4>
               <p className="text-brand-soft-white/80 mb-6 max-w-2xl mx-auto">
-                Skontaktuj się ze mną, aby omówić Twój projekt i zobaczyć, jak mogę pomóc w transformacji cyfrowej Twojej firmy.
+                {t("Skontaktuj się ze mną, aby omówić Twój projekt i zobaczyć, jak mogę pomóc w transformacji cyfrowej Twojej firmy.")}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
@@ -227,7 +232,7 @@ const Footer: React.FC<FooterProps> = ({ handleNav }) => {
                   className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-brand-neon to-brand-cyan text-brand-dark font-semibold rounded-full hover:shadow-lg hover:shadow-brand-neon/25 transition-all duration-300"
                 >
                   <Mail className="w-5 h-5" />
-                  Napisz do mnie
+                  {t("Napisz do mnie")}
                 </a>
                 <a
                   href="https://www.linkedin.com/in/natalianitychoruk/"
@@ -249,8 +254,8 @@ const Footer: React.FC<FooterProps> = ({ handleNav }) => {
           <div className="section-container py-6">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-2 text-brand-soft-white/60 text-sm">
-                <span>&copy; {new Date().getFullYear()} Natalia Nitychoruk.</span>
-                <span>Wszystkie prawa zastrzeżone.</span>
+                <span>&copy; {new Date().getFullYear()} {t("Natalia Nitychoruk")}.</span>
+                <span>{t("Wszystkie prawa zastrzeżone.")}.</span>
               {/*  <Heart className="w-4 h-4 text-brand-neon"> */}
               </div>
 
@@ -259,7 +264,7 @@ const Footer: React.FC<FooterProps> = ({ handleNav }) => {
                 <button
                   onClick={scrollToTop}
                   className="p-3 bg-brand-neon/10 rounded-full text-brand-neon hover:bg-brand-neon/20 transition-colors duration-300 group"
-                  aria-label="Powrót do góry"
+                  aria-label={t("Powrót do góry")}
                 >
                   <ArrowUp className="w-5 h-5 group-hover:-translate-y-1 transition-transform duration-300" />
                 </button>

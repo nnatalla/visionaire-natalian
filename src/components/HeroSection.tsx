@@ -2,17 +2,19 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { ChevronDown, Sparkles, Code, Brain, Zap, Atom, Network, Waves } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const HeroSection = () => {
   const isMobile = useIsMobile();
+  const { t } = useTranslation();
   const [currentText, setCurrentText] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
   const heroRef = useRef<HTMLElement>(null);
 
   const rotatingTexts = [
-    "AI | Automatyzacja | Data Science",
-    "Innowacje | Technologie | Rozwój",
-    "Rozwiązania | Efektywność | Przyszłość"
+    t("AI | Automatyzacja | Data Science"),
+    t("Innowacje | Technologie | Rozwój"),
+    t("Rozwiązania | Efektywność | Przyszłość")
   ];
 
   useEffect(() => {
@@ -44,9 +46,10 @@ const HeroSection = () => {
     const ofertaSection = document.getElementById('projekty');
     const headerOffset = 100;
     if (ofertaSection) {
-      const sectionPosition = ofertaSection.getBoundingClientRect().top + window.pageYOffset;
+      const rect = ofertaSection.getBoundingClientRect();
+      const absoluteTop = window.pageYOffset + rect.top;
       window.scrollTo({
-        top: sectionPosition - headerOffset,
+        top: absoluteTop - 10,
         behavior: 'smooth',
       });
     }
@@ -58,9 +61,10 @@ const HeroSection = () => {
     const header = document.querySelector('nav');
     const headerOffset = 100;
     if (section) {
-      const sectionPosition = section.getBoundingClientRect().top + window.pageYOffset;
+      const rect = section.getBoundingClientRect();
+      const absoluteTop = window.pageYOffset + rect.top;
       window.scrollTo({
-        top: sectionPosition - headerOffset,
+        top: absoluteTop - 10,
         behavior: 'smooth',
       });
     }
@@ -176,10 +180,10 @@ const HeroSection = () => {
         {/* Holographic Title */}
         <div className="mb-6">
           <h1 className="text-5xl md:text-7xl font-bold mb-4 holographic-text leading-tight text-center crystal-text">
-            VisionAIre
+            {t("VisionAIre")}
           </h1>
           <h2 className="text-2xl md:text-4xl font-semibold text-brand-white mb-2 text-center">
-            Natalia Nitychoruk
+            {t("Natalia Nitychoruk")}
           </h2>
         </div>
 
@@ -193,8 +197,7 @@ const HeroSection = () => {
         {/* Description */}
         <div className="max-w-2xl mx-auto mb-12">
           <p className="text-lg md:text-xl text-brand-soft-white leading-relaxed mb-6">
-            Transformuję biznes poprzez innowacyjne rozwiązania AI i automatyzację procesów.
-            Pomagam wykorzystać pełen potencjał danych i technologii dla osiągnięcia sukcesu.
+            {t("Transformuję biznes poprzez innowacyjne rozwiązania AI i automatyzację procesów. Pomagam wykorzystać pełen potencjał danych i technologii dla osiągnięcia sukcesu.")}
           </p>
 
           {/* Quantum Feature Icons */}
@@ -204,21 +207,21 @@ const HeroSection = () => {
                 <Brain className="w-6 h-6 text-brand-neon group-hover:animate-pulse" />
                 <div className="magnetic-wave" style={{ width: '60px', height: '2px' }}></div>
               </div>
-              <span className="text-sm text-brand-soft-white">AI Solutions</span>
+              <span className="text-sm text-brand-soft-white">{t("AI Solutions")}</span>
             </div>
             <div className="flex flex-col items-center group">
               <div className="p-3 bg-brand-cyan/10 rounded-full mb-2 group-hover:bg-brand-cyan/20 transition-all duration-300 magnetic-field">
                 <Network className="w-6 h-6 text-brand-cyan group-hover:animate-pulse" />
                 <div className="magnetic-wave" style={{ width: '60px', height: '2px' }}></div>
               </div>
-              <span className="text-sm text-brand-soft-white">Automation</span>
+              <span className="text-sm text-brand-soft-white">{t("Automation")}</span>
             </div>
             <div className="flex flex-col items-center group">
               <div className="p-3 bg-brand-purple/10 rounded-full mb-2 group-hover:bg-brand-purple/20 transition-all duration-300 magnetic-field">
                 <Atom className="w-6 h-6 text-brand-purple group-hover:animate-pulse" />
                 <div className="magnetic-wave" style={{ width: '60px', height: '2px' }}></div>
               </div>
-              <span className="text-sm text-brand-soft-white">Innovation</span>
+              <span className="text-sm text-brand-soft-white">{t("Innovation")}</span>
             </div>
           </div>
         </div>
@@ -231,7 +234,7 @@ const HeroSection = () => {
           >
             <span className="relative z-10 flex items-center gap-2">
               <Zap className="w-5 h-5" />
-              Nawiąż współpracę
+              {t("Nawiąż współpracę")}
             </span>
             <div className="absolute inset-0 bg-gradient-to-r from-brand-cyan to-brand-neon opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             <div className="magnetic-wave" style={{ width: '100%', height: '2px', top: '50%' }}></div>
@@ -243,7 +246,7 @@ const HeroSection = () => {
           >
             <span className="flex items-center gap-2">
               <Waves className="w-5 h-5" />
-              Obejrzyj projekty
+              {t("Obejrzyj projekty")}
             </span>
             <div className="magnetic-wave" style={{ width: '100%', height: '2px', top: '50%' }}></div>
           </button>
@@ -253,17 +256,17 @@ const HeroSection = () => {
         <div className="grid grid-cols-3 gap-18 max-w-md mx-auto mb-12">
           <div className="text-center magnetic-field">
             <div className="text-2xl md:text-3xl font-bold text-brand-neon mb-1 crystal-text">5+</div>
-            <div className="text-sm text-brand-soft-white">Lat Doświadczenia</div>
+            <div className="text-sm text-brand-soft-white">{t("Lat Doświadczenia")}</div>
             <div className="magnetic-wave" style={{ width: '60px', height: '1px', top: '100%', left: '50%', transform: 'translateX(-50%)' }}></div>
           </div>
           <div className="text-center magnetic-field">
             <div className="text-2xl md:text-3xl font-bold text-brand-cyan mb-1 crystal-text">10+</div>
-            <div className="text-sm text-brand-soft-white">Projektów</div>
+            <div className="text-sm text-brand-soft-white">{t("Projektów")}</div>
             <div className="magnetic-wave" style={{ width: '60px', height: '1px', top: '100%', left: '50%', transform: 'translateX(-50%)' }}></div>
           </div>
           <div className="text-center magnetic-field">
             <div className="text-2xl md:text-3xl font-bold text-brand-purple mb-1 crystal-text">9+</div>
-            <div className="text-sm text-brand-soft-white">Certyfikatów</div>
+            <div className="text-sm text-brand-soft-white">{t("Certyfikatów")}</div>
             <div className="magnetic-wave" style={{ width: '60px', height: '1px', top: '100%', left: '50%', transform: 'translateX(-50%)' }}></div>
           </div>
         </div>
@@ -273,7 +276,7 @@ const HeroSection = () => {
       <button
         onClick={scrollToNext}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 group magnetic-field"
-        aria-label="Przewiń w dół"
+        aria-label={t("Przewiń w dół")}
       >
         <div className="p-3 bg-brand-neon/20 hover:bg-brand-neon/30 rounded-full transition-all duration-300 group-hover:scale-110">
           <ChevronDown className="w-6 h-6 text-brand-neon animate-bounce" />
